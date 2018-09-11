@@ -16,11 +16,8 @@ import csv
 app = Flask(__name__)
 
 @app.route('/')
-def hola():
-    return('Hola como andas? Me alegro.')
-''' ESTO CUANDO SE ACTIVA FUNCIONA PERO DA TYPE ERROR NONE TYPE
-    NO DEJA VISUALIZAR LAS PÁGINAS
-@app.after_request
+def hola():}
+    @app.after_request
 def after(response):
     log ={
         'service':str(request.url_rule),
@@ -50,8 +47,7 @@ def after(response):
             print('Now Saving: ', log)
             print ('Success: saved log. ')
     except:
-        print('Error: nos vamos. ', sys.exc_info())
-'''
+        print('Error. Terminando el proceso. ', sys.exc_info())
 
 def check_auth(username, password):
     """This function is called to check if a username /
@@ -65,9 +61,9 @@ def check_auth(username, password):
 
 def authenticate():
     return Response(
-    'Could not verify your access level for that URL.\n'
-    'You have to login with proper credentials', 401,
-    {'WWW-Authenticate': 'Basic realm="Login Required"'})
+    'No se pudo verificar su nivel de acceso para ésta URL.\n'
+    'Debes iniciar sesión con las credenciales correctas', 401,
+    {'WWW-Authenticate': 'Basic realm="Login requerido"'})
 
 
 def requires_auth(f):
@@ -87,7 +83,7 @@ def microdatos():
     return sent_sentimiento()       
 @app.route('/working_page')
 def mostrar():
-    return('esta pagina funcionaa')
+    return('Ésta página funciona.')
 app.run()
 
 
